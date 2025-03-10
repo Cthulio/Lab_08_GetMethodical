@@ -11,7 +11,7 @@ public class FavNumbers {
 
         favInt = SafeInput.getInt(in, "Enter your favorite Integer");
 
-        favDouble = DevTest.getDouble(in, "Enter your favorite Double");
+        favDouble = SafeInput.getDouble(in, "Enter your favorite Double");
 
         System.out.println("\nYour favorite Int is: " + favInt + " and your favorite Double is " + favDouble);
     }

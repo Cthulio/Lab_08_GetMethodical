@@ -135,7 +135,7 @@ public class SafeInput {
 
                 } else {
                     trash = pipe.nextLine();
-                    System.out.println(trash + " is not an double. Please insert an double!");
+                    System.out.println(trash + " is not a double. Please insert a double!");
                 }
             }
             while (!trash.isEmpty());
@@ -180,7 +180,7 @@ public class SafeInput {
             }
             else
             {
-                System.out.println(temporaryInput + " does not match an SSN, please put in an SSN!");
+                System.out.println(temporaryInput + " invalid format, please try again!");
             }
 
         }

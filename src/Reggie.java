@@ -4,14 +4,15 @@ public class Reggie {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
-        int favInt = 42;//the value is a filler for displaying here only, it will be replaced.
+        String yourSSN = "";
+        String studentID = "";
+        String menuItem = "";
 
-        double favDouble = 3.14;//same as above.
+        yourSSN = SafeInput.getRegExString(in, "Enter your SSN", "^\\d{3}-\\d{2}-\\d{4}$");
+        studentID = SafeInput.getRegExString(in, "Enter your Student ID", "(M|m)\\d{5}$");
+        //M numbers are longer than this aren't they?
+        menuItem = SafeInput.getRegExString(in, "Open, Save, View, or Quit?", "^[OoSsVvQq]$");
 
-        //favInt = SafeInput.getInt(in, "Enter your favorite Integer");
-
-        //favDouble = SafeInput.getDouble(in, "Enter your favorite Double");
-
-        System.out.println("\nYour favorite Int is: " + favInt + " and your favorite Double is " + favDouble);
+        System.out.println("Your SSN: "+yourSSN+ ", your Student ID: "+studentID+" your final option: "+menuItem);
     }
 }

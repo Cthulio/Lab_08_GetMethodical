@@ -3,15 +3,13 @@ import java.util.Scanner;
 public class CheckOut {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
+        double totalCost = 0;
 
-        int favInt = 42;//the value is a filler for displaying here only, it will be replaced.
-
-        double favDouble = 3.14;//same as above.
-
-        //favInt = SafeInput.getInt(in, "Enter your favorite Integer");
-
-        //favDouble = SafeInput.getDouble(in, "Enter your favorite Double");
-
-        System.out.println("\nYour favorite Int is: " + favInt + " and your favorite Double is " + favDouble);
+        do
+        {
+            totalCost+= SafeInput.getRangedDouble(in, "Please input an item cost from the $10 Store", 0.00,10.00);
+        }
+        while(SafeInput.getYNConfirm(in, "Do you have any more items (Y/N)?"));
+        System.out.printf("\nYour total amounts to: $%.2f%n",totalCost);
     }
 }

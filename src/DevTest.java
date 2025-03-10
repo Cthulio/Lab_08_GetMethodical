@@ -2,7 +2,7 @@ import java.util.Scanner;
 public class DevTest {
     public static void main(String[] args) {
         //we can call each method individually here, changing according to which one we actually need to test.
-        getRegExString(new Scanner(System.in),"DevTest 'Please enter a SSN'", "^\\d{3}-\\d{2}-\\d{4}$");
+        //getRegExString(new Scanner(System.in),"DevTest 'Please enter a SSN'", "^\\d{3}-\\d{2}-\\d{4}$");
     }
     //#tested_methods
     public static String getNonZeroLenString(Scanner pipe, String prompt)
@@ -183,7 +183,7 @@ public class DevTest {
             }
             else
             {
-                System.out.println(temporaryInput + " does not match an SSN, please put in an SSN!");
+                System.out.println(temporaryInput + " invalid format, please try again!");
             }
 
         }
