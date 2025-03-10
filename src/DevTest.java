@@ -2,7 +2,7 @@ import java.util.Scanner;
 public class DevTest {
     public static void main(String[] args) {
         //we can call each method individually here, changing according to which one we actually need to test.
-        //getRegExString(new Scanner(System.in),"DevTest 'Please enter a SSN'", "^\\d{3}-\\d{2}-\\d{4}$");
+        //CtoFDisplay();
     }
     //#tested_methods
     public static String getNonZeroLenString(Scanner pipe, String prompt)
@@ -195,24 +195,65 @@ public class DevTest {
 
 
 
-    public static void CtoFConverter()
+
+    //I wasn't sure with how the instructions were written if i needed the following methods here as well as their own classes. Hopefully both is fine.
+    public static void PrettyHeader()
     {
-        //borrowing my own code from exercise 6, modifying as necessary
-//        double temperatureToConvert = 0.0;
-//        String trash = "";
-//        do {
-//            System.out.println("Please provide a temperature in Celsius:");
-//            if (pipe.hasNextDouble()) {
-//                temperatureToConvert = in.nextDouble();
-//                pipe.nextLine();
-//                trash = "";//empty the trash.
-//            } else {
-//                trash = pipe.nextLine();
-//                System.out.println(trash + " is not a valid temperature!");
-//            }
-//        }
-//        while (!trash.isEmpty());//I find this more effective than storing a "done" value, we would only need to clear it on valid input, and it's a bit funny.
-//        CtoFTableDisplay convert = new CtoFTableDisplay(System.in, "Your temperature in Fahrenheit is: ");
+        Scanner in = new Scanner(System.in);
+
+        String myMessage = SafeInput.getNonZeroLenString(in, "Type your message here");//It makes sense to me to use !0len here.
+        int messageLen = myMessage.length();
+
+        for(int line = 3; line > 0; line--)
+        {
+            for (int side = 0; side < 2; side++) {
+                if (line != 2)
+                {
+                    for (int lineLength = 0; lineLength < 30; lineLength++)//two halves, which I need to calculate with later.
+                    {
+                        System.out.print("*");
+                    }
+                }
+                else
+                {
+
+                    int sideLen = 30-(messageLen/2);//half, minus half a message.
+                    for (int lineLength = 0; lineLength+(messageLen/2) < 30; lineLength++)//stop a half from forming
+                    // before half the message's space is taken too.
+                    {
+                        if(side == 0 && lineLength < 3 )//left side, only as many as 3.
+                        {
+                            System.out.print("*");
+                        }
+                        else if (side == 1 && sideLen-lineLength <= 3 )//right side, the last three
+                        {
+                            System.out.print("*");
+                        }
+                        else
+                            System.out.print(" ");
+                    }
+                    if (side == 0)
+                    {
+                        System.out.print(myMessage);
+                    }
+                }
+            }
+            System.out.println();
+        }
+    }
+    public static double CtoF(double Celsius)
+    {
+     double tempInFahrenheit = (Celsius * 1.8)+32;
+    return tempInFahrenheit;
     }
 
+    public static void CtoFDisplay()
+    {
+        System.out.println("Celsius  |  Fahrenheit");
+        System.out.print("----------------------");
+        for (double degreesCelc = -100; degreesCelc <= 100; degreesCelc++)
+        {
+            System.out.printf("\n %.2f  |  %.2f", degreesCelc, CtoF(degreesCelc));
+        }
+    }
 }

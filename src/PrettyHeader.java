@@ -12,7 +12,7 @@ public class PrettyHeader {
             for (int side = 0; side < 2; side++) {
                 if (line != 2)
                 {
-                    for (int lineLength = 0; lineLength < 15; lineLength++)
+                    for (int lineLength = 0; lineLength < 30; lineLength++)//two halves, which I need to calculate with later.
                     {
                         System.out.print("*");
                     }
@@ -20,14 +20,15 @@ public class PrettyHeader {
                 else
                 {
 
-                    int sideLen = 15-(messageLen/2);
-                    for (int lineLength = 0; lineLength+(messageLen/2) < 15; lineLength++)
+                    int sideLen = 30-(messageLen/2);//half, minus half a message.
+                    for (int lineLength = 0; lineLength+(messageLen/2) < 30; lineLength++)//stop a half from forming
+                        // before half the message's space is taken too.
                     {
-                        if(side == 0 && lineLength+sideLen < 16 )
+                        if(side == 0 && lineLength < 3 )//left side, only as many as 3.
                         {
                             System.out.print("*");
                         }
-                        else if (side == 1 && lineLength+sideLen > 22)
+                        else if (side == 1 && sideLen-lineLength <= 3 )//right side, the last three
                         {
                             System.out.print("*");
                         }
